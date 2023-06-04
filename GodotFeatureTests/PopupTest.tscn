@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://qv5l8utmkkq2"]
+
+[ext_resource type="Script" path="res://GodotFeatureTests/PopupTest.gd" id="1_e6jg0"]
+[ext_resource type="PackedScene" uid="uid://cmv6ocf752ccm" path="res://GodotFeatureTests/InnerContent.tscn" id="1_td8mu"]
+
+[node name="PopupTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e6jg0")
+
+[node name="Window" type="Window" parent="."]
+
+[node name="InnerContent" parent="Window" instance=ExtResource("1_td8mu")]
+
+[node name="Popup" type="Popup" parent="."]
+position = Vector2i(118, 0)
+visible = true
+
+[node name="InnerContent" parent="Popup" instance=ExtResource("1_td8mu")]
+visible = false
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+position = Vector2i(335, 0)
+visible = true
+
+[node name="InnerContent" parent="PopupMenu" instance=ExtResource("1_td8mu")]
+visible = false
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+position = Vector2i(226, 0)
+
+[node name="InnerContent" parent="PopupPanel" instance=ExtResource("1_td8mu")]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0

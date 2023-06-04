@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmv6ocf752ccm"]
+
+[ext_resource type="Script" path="res://GodotFeatureTests/InnerContent.gd" id="1_f60mo"]
+
+[node name="InnerContent" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.341176, 0.301961, 1)
+script = ExtResource("1_f60mo")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEXT CONTENT"
+horizontal_alignment = 1
+vertical_alignment = 1
