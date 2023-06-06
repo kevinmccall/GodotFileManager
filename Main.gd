@@ -7,7 +7,7 @@ const FILE_SAVE_PATH = "res://favorite_files.json"
 @onready var loader = $DisplayLoader
 @onready var display_creator = $DisplayCreator
 @onready var selection_manager = $SelectionManager
-@onready var display_holder = $HBoxContainer/Panel/VBoxContainer/DisplayHolder
+@onready var display_holder = $HBoxContainer/Panel/VBoxContainer/ScrollContainer/DisplayHolder
 @onready var edit_command_popup = $EditCommandPopup
 
 
@@ -23,15 +23,13 @@ func _input(event):
 		return
 	if event.is_action_pressed("ui_down"):
 		select_next()
-		print('down')
 	elif event.is_action_pressed("ui_up"):
 		select_previous()
-		print('up')
 
-#func _process(delta):
-#	var selected = selection_manager.get_selected_display()
-#	if selected:
-#		print(selected.get_file_path())
+func _process(delta):
+	var selected = selection_manager.get_selected_display()
+	if selected:
+		print(selected.get_file_path())
 
 func load_favorites():
 	var file_paths = loader.load_filepaths()
@@ -67,8 +65,14 @@ func select_previous():
 
 func run_command():
 	var display = selection_manager.get_selected_display()
-	var new_args = [display.get_file_path()]
+	var filepath = display.get_file_path()
+	if OS.get_name() == 'Windows':
+		filepath = make_windows_path(filepath)
+	var new_args = [filepath]
 	command_runner.run_command(new_args)
+
+func make_windows_path(path : String):
+	return path.replace("/", "\\")
 
 func _on_AddFavoriteDialogue_file_selected(path):
 	add_favorite(path)

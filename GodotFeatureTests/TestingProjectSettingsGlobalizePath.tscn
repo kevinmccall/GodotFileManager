@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccl11w3q6skck"]
+
+[ext_resource type="Script" path="res://GodotFeatureTests/TestingProjectSettingsGlobalizePath.gd" id="1_adlpr"]
+[ext_resource type="Script" path="res://FavoritesLoader.gd" id="2_075pi"]
+
+[node name="TestingProjectSettingsGlobalizePath" type="Node"]
+script = ExtResource("1_adlpr")
+
+[node name="Loader" type="Node" parent="."]
+script = ExtResource("2_075pi")

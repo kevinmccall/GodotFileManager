@@ -52,7 +52,11 @@ size_flags_horizontal = 3
 [node name="FileSearchEdit" type="LineEdit" parent="HBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="DisplayHolder" type="VBoxContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DisplayHolder" type="VBoxContainer" parent="HBoxContainer/Panel/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_stkja")
