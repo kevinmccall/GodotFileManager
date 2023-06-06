@@ -9,12 +9,12 @@ func fuzzy_find(sample: String, compare: String):
 	var start = -1
 	var end = -1
 	for character in compare:
-		var char_index = sample.find(character, sample_index)
-		if char_index == -1:
+		sample_index = sample.find(character, sample_index)
+		if sample_index == -1:
 			return
 		if start == -1:
-			start = char_index
-		end = char_index
+			start = sample_index
+		end = sample_index
 	return [start, end]
 
 func show_all():

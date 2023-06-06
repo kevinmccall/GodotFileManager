@@ -1,4 +1,4 @@
-extends ColorRect
+extends Button
 class_name FileDisplay
 
 signal selected(this)
@@ -20,19 +20,13 @@ func update_display():
 	if file != null:
 		$Label.text = get_file_path()
 	if is_selected:
-		color = selected_color
+		$ColorRect.color = selected_color
 	else:
-		color = unselected_color
+		$ColorRect.color = unselected_color
 
-func _unhandled_input(event):
-	var modified_rect = get_rect()
-	modified_rect.position = global_position
-	if event is InputEventMouseButton \
-	and event.button_index == MOUSE_BUTTON_LEFT \
-	and event.pressed \
-	and modified_rect.has_point(get_global_mouse_position()):
-		emit_signal('selected', self)
-		get_viewport().set_input_as_handled()
+func _pressed():
+	emit_signal('selected', self)
+	print('pressed')
 
 func select():
 	is_selected = true

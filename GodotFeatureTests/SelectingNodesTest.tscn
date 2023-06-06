@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://coiymd6w5mrug"]
+
+[ext_resource type="Script" path="res://GodotFeatureTests/SelectingNodesTest.gd" id="1_28khn"]
+[ext_resource type="Script" path="res://GodotFeatureTests/FocustTest.gd" id="2_o67jg"]
+
+[node name="SelectingNodesTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28khn")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_right = 84.0
+offset_bottom = 40.0
+focus_next = NodePath("../Panel2")
+focus_previous = NodePath("../LineEdit3")
+focus_mode = 2
+script = ExtResource("2_o67jg")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_right = 127.0
+offset_bottom = 40.0
+focus_next = NodePath("../Panel3")
+focus_previous = NodePath("../Panel")
+focus_mode = 2
+script = ExtResource("2_o67jg")
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 132.0
+offset_right = 172.0
+offset_bottom = 40.0
+focus_next = NodePath("../LineEdit")
+focus_previous = NodePath("../Panel2")
+focus_mode = 2
+script = ExtResource("2_o67jg")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 69.0
+offset_right = 70.0625
+offset_bottom = 100.0
+focus_next = NodePath("../LineEdit2")
+focus_previous = NodePath("../Panel3")
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 69.0
+offset_right = 146.063
+offset_bottom = 100.0
+focus_next = NodePath("../LineEdit3")
+focus_previous = NodePath("../LineEdit")
+
+[node name="LineEdit3" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 69.0
+offset_right = 225.063
+offset_bottom = 100.0
+focus_next = NodePath("../Panel")
+focus_previous = NodePath("../LineEdit2")

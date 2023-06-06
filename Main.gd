@@ -49,6 +49,8 @@ func add_favorite(path: String):
 
 func get_offset_display(offset) -> FileDisplay:
 	var selected: FileDisplay = selection_manager.get_selected_display()
+	if selected == null:
+		return
 	var visible_displays: Array = display_holder.get_visible_displays()
 	var index: int = clampi(visible_displays.find(selected) + offset, 0, len(visible_displays) - 1)
 	return visible_displays[index]
@@ -65,6 +67,8 @@ func select_previous():
 
 func run_command():
 	var display = selection_manager.get_selected_display()
+	if display == null:
+		return
 	var filepath = display.get_file_path()
 	if OS.get_name() == 'Windows':
 		filepath = make_windows_path(filepath)
