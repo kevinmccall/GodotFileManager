@@ -33,7 +33,6 @@ func _unhandled_input(event):
 	and modified_rect.has_point(get_global_mouse_position()):
 		emit_signal('selected', self)
 		get_viewport().set_input_as_handled()
-		print('%s selected' % get_file_path())
 
 func select():
 	is_selected = true

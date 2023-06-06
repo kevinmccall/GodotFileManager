@@ -18,6 +18,16 @@ func _ready():
 	load_favorites()
 	edit_command_popup.set_line_edit_text($CommandRunner.get_command())
 
+func _input(event):
+	if selection_manager.get_selected_display() == null:
+		return
+	if event.is_action_pressed("ui_down"):
+		select_next()
+		print('down')
+	elif event.is_action_pressed("ui_up"):
+		select_previous()
+		print('up')
+
 #func _process(delta):
 #	var selected = selection_manager.get_selected_display()
 #	if selected:
@@ -39,6 +49,22 @@ func add_favorite(path: String):
 	display.selected.connect(_on_file_display_selected)
 	display_holder.add_display(display)
 
+func get_offset_display(offset) -> FileDisplay:
+	var selected: FileDisplay = selection_manager.get_selected_display()
+	var visible_displays: Array = display_holder.get_visible_displays()
+	var index: int = clampi(visible_displays.find(selected) + offset, 0, len(visible_displays) - 1)
+	return visible_displays[index]
+
+func select_next():
+	var display = get_offset_display(1)
+	selection_manager.unselect_display()
+	selection_manager.select_display(display)
+
+func select_previous():
+	var display = get_offset_display(-1)
+	selection_manager.unselect_display()
+	selection_manager.select_display(display)
+
 func run_command():
 	var display = selection_manager.get_selected_display()
 	var new_args = [display.get_file_path()]
@@ -51,7 +77,6 @@ func _on_AddFavoriteDialogue_file_selected(path):
 func _on_file_display_selected(file_display: FileDisplay):
 	selection_manager.unselect_display()
 	selection_manager.select_display(file_display)
-	print("selected display " + file_display.get_file_path())
 
 func _on_remove_favorite_button_pressed():
 	var selected_display = selection_manager.get_selected_display()
@@ -79,7 +104,6 @@ func _on_edit_command_popup_new_command_set(new_command):
 
 func _on_file_search_edit_text_submitted(new_text):
 	run_command()
-
 
 func _on_file_search_edit_text_changed(new_text):
 	display_holder.narrow_search_options(new_text)
